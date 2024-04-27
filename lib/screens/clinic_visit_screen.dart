@@ -8,27 +8,27 @@ class ClinicVisitScreen extends StatelessWidget {
     Clinic(
       name: 'Klinik Medical Center',
       address: 'Jl. Kenjeran No.506',
-      image: 'images/klinik5.jpeg',
+      image: 'assets/images/klinik5.jpeg',
     ),
     Clinic(
       name: 'Klinik Tabita',
       address: 'Jl. Raya Dharma Husada Indah No.26',
-      image: 'images/klinik1.jpeg',
+      image: 'assets/images/klinik1.jpeg',
     ),
     Clinic(
       name: 'Klinik Surya Medika',
       address: 'Jl. Mojo Klanggru Wetan IV No.181',
-      image: 'images/klinik2.jpeg',
+      image: 'assets/images/klinik2.jpeg',
     ),
     Clinic(
       name: 'Klinik Pratama',
       address: 'Jl. Wisma Permai Barat III Blok FP No.12',
-      image: 'images/klinik3.jpeg',
+      image: 'assets/images/klinik3.jpeg',
     ),
     Clinic(
       name: 'Klinik Tong Fang',
       address: 'Jl. Mojo I No.10',
-      image: 'images/klinik4.jpeg',
+      image: 'assets/images/klinik4.jpeg',
     ),
     // Tambahkan data klinik lainnya sesuai kebutuhan
   ];

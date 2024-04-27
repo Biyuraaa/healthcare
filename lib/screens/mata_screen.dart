@@ -9,15 +9,15 @@ class MataScreen extends StatelessWidget {
   final List<Doctor> doctors = [
     Doctor(
       name: 'Dr. Akira',
-      image: 'images/doctor2.jpg',
+      image: 'assets/images/doctor2.jpg',
     ),
     Doctor(
       name: 'Dr. Dewi Indah',
-      image: 'images/doctor6.jpg',
+      image: 'assets/images/doctor6.jpg',
     ),
     Doctor(
       name: 'Dr. Tom Albert',
-      image: 'images/doctor10.jpg',
+      image: 'assets/images/doctor10.jpg',
     ),
     // Tambahkan data dokter lainnya sesuai kebutuhan
   ];

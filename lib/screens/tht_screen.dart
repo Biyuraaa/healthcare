@@ -9,15 +9,15 @@ class THTScreen extends StatelessWidget {
   final List<Doctor> doctors = [
     Doctor(
       name: 'Dr. Hans Muller',
-      image: 'images/doctor4.jpg',
+      image: 'assets/images/doctor4.jpg',
     ),
     Doctor(
       name: 'Dr. Partono',
-      image: 'images/doctor8.jpg',
+      image: 'assets/images/doctor8.jpg',
     ),
     Doctor(
       name: 'Dr. Aufa Izmi',
-      image: 'images/doctor12.jpg',
+      image: 'assets/images/doctor12.jpg',
     ),
     // Tambahkan data dokter lainnya sesuai kebutuhan
   ];

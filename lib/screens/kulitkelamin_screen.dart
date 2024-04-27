@@ -9,15 +9,15 @@ class KulitKelaminScreen extends StatelessWidget {
   final List<Doctor> doctors = [
     Doctor(
       name: 'Dr. Abigail',
-      image: 'images/doctor1.jpg',
+      image: 'assets/images/doctor1.jpg',
     ),
     Doctor(
       name: 'Dr. Makmuri',
-      image: 'images/doctor5.jpg',
+      image: 'assets/images/doctor5.jpg',
     ),
     Doctor(
       name: 'Dr. Sanjaya',
-      image: 'images/doctor9.jpg',
+      image: 'assets/images/doctor9.jpg',
     ),
     // Tambahkan data dokter lainnya sesuai kebutuhan
   ];

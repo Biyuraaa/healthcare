@@ -43,7 +43,7 @@ class WelcomeScreen extends StatelessWidget {
             Expanded(
               child: Container(
                 padding: const EdgeInsets.all(20),
-                child: Image.asset("images/LOGO.png"),
+                child: Image.asset("assets/images/LOGO.png"),
               ),
             ),
             const Text(

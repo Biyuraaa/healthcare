@@ -14,8 +14,8 @@ class _ProfilScreenState extends State<ProfilScreen> {
   String namaProfil = "Kipli";
   String emailProfil = "raflimustari2@gmail.com";
   String telepon = "081336539269";
-  ImageProvider? fotoProfil =
-      AssetImage("images/profil.jpg"); // Ganti dengan foto profil yang sesuai
+  ImageProvider? fotoProfil = AssetImage(
+      "assets/images/profil.jpg"); // Ganti dengan foto profil yang sesuai
 
   final ImagePicker _picker = ImagePicker();
 

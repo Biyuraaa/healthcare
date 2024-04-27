@@ -36,9 +36,9 @@ class _SettingScreenState extends State<SettingScreen> {
                   });
                 },
                 children: [
-                  _buildImagePage(imagePath: 'images/gambar1.png'),
-                  _buildImagePage(imagePath: 'images/gambar2.png'),
-                  _buildImagePage(imagePath: 'images/gambar3.png'),
+                  _buildImagePage(imagePath: 'assets/images/gambar1.png'),
+                  _buildImagePage(imagePath: 'assets/images/gambar2.png'),
+                  _buildImagePage(imagePath: 'assets/images/gambar3.png'),
                   // Tambahkan lebih banyak halaman gambar jika diperlukan
                 ],
               ),

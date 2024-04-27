@@ -9,62 +9,62 @@ class OnlineVisitScreen extends StatelessWidget {
     Doctor(
         name: 'Dr. Abigail',
         specialization: 'Spesialis Kulit & Kelamin',
-        image: 'images/doctor1.jpg',
+        image: 'assets/images/doctor1.jpg',
         phoneNumber: '6281336539269'),
     Doctor(
         name: 'Dr. Akira',
         specialization: 'Spesialis Mata',
-        image: 'images/doctor2.jpg',
+        image: 'assets/images/doctor2.jpg',
         phoneNumber: '081336539269'),
     Doctor(
         name: 'Dr. David Smith',
         specialization: 'Spesialis Penyakit Dalam',
-        image: 'images/doctor3.jpg',
+        image: 'assets/images/doctor3.jpg',
         phoneNumber: '081336539269'),
     Doctor(
         name: 'Dr. Hans Muller',
         specialization: 'Spesialis THT',
-        image: 'images/doctor4.jpg',
+        image: 'assets/images/doctor4.jpg',
         phoneNumber: '081336539269'),
     Doctor(
         name: 'Dr. Makmuri',
         specialization: 'Spesialis Kulit & Kelamin',
-        image: 'images/doctor5.jpg',
+        image: 'assets/images/doctor5.jpg',
         phoneNumber: '081336539269'),
     Doctor(
         name: 'Dr. Dewi Indah',
         specialization: 'Spesialis Mata',
-        image: 'images/doctor6.jpg',
+        image: 'assets/images/doctor6.jpg',
         phoneNumber: '081336539269'),
     Doctor(
         name: 'Dr. Soparter',
         specialization: 'Spesialis Penyakit Dalam',
-        image: 'images/doctor7.jpg',
+        image: 'assets/images/doctor7.jpg',
         phoneNumber: '081336539269'),
     Doctor(
         name: 'Dr. Partono',
         specialization: 'Spesialis THT',
-        image: 'images/doctor8.jpg',
+        image: 'assets/images/doctor8.jpg',
         phoneNumber: '081336539269'),
     Doctor(
         name: 'Dr. Sanjaya',
         specialization: 'Spesialis Kulit & Kelamin',
-        image: 'images/doctor9.jpg',
+        image: 'assets/images/doctor9.jpg',
         phoneNumber: '081336539269'),
     Doctor(
         name: 'Dr. Tom Albert',
         specialization: 'Spesialis Mata',
-        image: 'images/doctor10.jpg',
+        image: 'assets/images/doctor10.jpg',
         phoneNumber: '081336539269'),
     Doctor(
         name: 'Dr. Indra Khasanah',
         specialization: 'Spesialis Penyakit Dalam',
-        image: 'images/doctor11.jpg',
+        image: 'assets/images/doctor11.jpg',
         phoneNumber: '081336539269'),
     Doctor(
         name: 'Dr. Aufa Izmi',
         specialization: 'Spesialis THT',
-        image: 'images/doctor12.jpg',
+        image: 'assets/images/doctor12.jpg',
         phoneNumber: '081336539269'),
     // Tambahkan data dokter lainnya sesuai kebutuhan
   ];

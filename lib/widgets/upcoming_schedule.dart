@@ -51,7 +51,7 @@ class _UpcomingScheduleState extends State<UpcomingSchedule> {
                     ),
                     trailing: CircleAvatar(
                       radius: 25,
-                      backgroundImage: AssetImage("images/doctor1.jpg"),
+                      backgroundImage: AssetImage("assets/images/doctor1.jpg"),
                     ),
                   ),
                   const Padding(
@@ -216,7 +216,7 @@ class _UpcomingScheduleState extends State<UpcomingSchedule> {
                     ),
                     trailing: CircleAvatar(
                       radius: 25,
-                      backgroundImage: AssetImage("images/doctor2.jpg"),
+                      backgroundImage: AssetImage("assets/images/doctor2.jpg"),
                     ),
                   ),
                   const Padding(
@@ -381,7 +381,7 @@ class _UpcomingScheduleState extends State<UpcomingSchedule> {
                     ),
                     trailing: CircleAvatar(
                       radius: 25,
-                      backgroundImage: AssetImage("images/doctor3.jpg"),
+                      backgroundImage: AssetImage("assets/images/doctor3.jpg"),
                     ),
                   ),
                   const Padding(

@@ -9,15 +9,15 @@ class PenyakitDalamScreen extends StatelessWidget {
   final List<Doctor> doctors = [
     Doctor(
       name: 'Dr. David Smith',
-      image: 'images/doctor3.jpg',
+      image: 'assets/images/doctor3.jpg',
     ),
     Doctor(
       name: 'Dr. Soparter',
-      image: 'images/doctor7.jpg',
+      image: 'assets/images/doctor7.jpg',
     ),
     Doctor(
       name: 'Dr. Indra Khasanah',
-      image: 'images/doctor11.jpg',
+      image: 'assets/images/doctor11.jpg',
     ),
     // Tambahkan data dokter lainnya sesuai kebutuhan
   ];

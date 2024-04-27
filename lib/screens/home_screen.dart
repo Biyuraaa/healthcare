@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
             SizedBox(width: 170), // Spasi antara teks dan avatar
             CircleAvatar(
               radius: 25,
-              backgroundImage: AssetImage("images/LOGO.png"),
+              backgroundImage: AssetImage("assets/images/LOGO.png"),
             ),
           ],
         ),
@@ -58,7 +58,7 @@ class HomeScreen extends StatelessWidget {
               accountName: Text("Kipli"),
               accountEmail: Text("raflimustari2@gmail.com"),
               currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage("images/profil.jpg"),
+                backgroundImage: AssetImage("assets/images/profil.jpg"),
               ),
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 0, 74, 173),
@@ -384,7 +384,7 @@ class HomeScreen extends StatelessWidget {
                           CircleAvatar(
                             radius: 35,
                             backgroundImage: AssetImage(
-                                "images/${ReviewDataModel.reviewDataModel[index].image}"),
+                                "assets/images/${ReviewDataModel.reviewDataModel[index].image}"),
                           ),
                           Text(
                             doctors[index],

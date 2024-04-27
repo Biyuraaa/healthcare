@@ -54,7 +54,7 @@ class _CompletedScheduleState extends State<CompletedSchedule> {
                     ),
                     trailing: CircleAvatar(
                       radius: 25,
-                      backgroundImage: AssetImage("images/doctor2.jpg"),
+                      backgroundImage: AssetImage("assets/images/doctor2.jpg"),
                     ),
                   ),
                   const Padding(
@@ -212,7 +212,7 @@ class _CompletedScheduleState extends State<CompletedSchedule> {
                     ),
                     trailing: CircleAvatar(
                       radius: 25,
-                      backgroundImage: AssetImage("images/doctor4.jpg"),
+                      backgroundImage: AssetImage("assets/images/doctor4.jpg"),
                     ),
                   ),
                   const Padding(
