@@ -43,6 +43,7 @@ dependencies:
   cloud_firestore: ^4.15.9
   google_sign_in: ^6.2.1
   firebase_storage: ^11.7.1
+  shared_preferences:
 
 dev_dependencies:
   flutter_test:

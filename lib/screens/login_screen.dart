@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:healthcare/screens/sign_up_screen.dart';
 import 'package:healthcare/services/authentication/auth_service.dart';
 import 'package:healthcare/widgets/navbar_roots.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -25,6 +26,15 @@ class _LoginScreenState extends State<LoginScreen> {
     _username = TextEditingController();
     _password = TextEditingController();
     super.initState();
+    _loadRememberMe();
+  }
+
+  void _loadRememberMe() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool rememberMe = prefs.getBool('rememberMe') ?? false;
+    setState(() {
+      _rememberMe = rememberMe;
+    });
   }
 
   @override
@@ -110,11 +120,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   CheckboxListTile(
                     value: _rememberMe,
-                    onChanged: (value) {
+                    onChanged: (value) async {
                       if (value == null) return;
                       setState(() {
                         _rememberMe = value;
                       });
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      await prefs.setBool('rememberMe', value);
                     },
                     title: const Text('Remember me'),
                     controlAffinity: ListTileControlAffinity.leading,
