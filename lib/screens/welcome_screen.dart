@@ -23,10 +23,11 @@ class WelcomeScreen extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const NavBarRoots(),
-                      ));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const NavBarRoots(),
+                    ),
+                  );
                 },
                 child: const Text(
                   "SKIP",

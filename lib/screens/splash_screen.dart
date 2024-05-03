@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:healthcare/screens/welcome_screen.dart';
 import 'package:healthcare/services/authentication/auth_page.dart'; // Import the WelcomeScreen
 
 class SplashScreen extends StatefulWidget {
@@ -25,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: Image.asset(
-            'images/LOGO.png'), // Adjust the path to your logo image
+            'assets/images/LOGO.png'), // Adjust the path to your logo image
       ),
     );
   }

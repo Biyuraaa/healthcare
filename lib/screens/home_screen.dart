@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:healthcare/model/dokter_model.dart';
 import 'package:healthcare/screens/appointment_screen.dart';
@@ -54,15 +55,38 @@ class HomeScreen extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            UserAccountsDrawerHeader(
-              accountName: Text("Kipli"),
-              accountEmail: Text("raflimustari2@gmail.com"),
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage("assets/images/profil.jpg"),
-              ),
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 0, 74, 173),
-              ),
+            StreamBuilder<DocumentSnapshot>(
+              stream: FirebaseFirestore.instance
+                  .collection('Users')
+                  .doc(auth.currentUser?.email)
+                  .snapshots(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<DocumentSnapshot> snapshot) {
+                if (snapshot.hasError) {
+                  return Text('Something went wrong');
+                }
+
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Text("Loading");
+                }
+
+                if (snapshot.data?.data() == null) {
+                  return Text("No data");
+                }
+
+                Map<String, dynamic> data =
+                    snapshot.data!.data() as Map<String, dynamic>;
+                return UserAccountsDrawerHeader(
+                  accountName: Text(data['username'] ?? 'Guest'),
+                  accountEmail: Text(data['email'] ?? 'example.com'),
+                  currentAccountPicture: CircleAvatar(
+                    backgroundImage: AssetImage("assets/images/profil.jpg"),
+                  ),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 0, 74, 173),
+                  ),
+                );
+              },
             ),
             ListTile(
               leading: Icon(Icons.edit),
