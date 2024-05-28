@@ -1,8 +1,14 @@
+// ignore_for_file: library_private_types_in_public_api, use_super_parameters, prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:healthcare/model/dokter_model.dart';
+import 'package:healthcare/services/authentication/booking_service.dart';
 import 'package:healthcare/widgets/navbar_roots.dart';
 
 class BookAppointmentScreen extends StatefulWidget {
-  const BookAppointmentScreen({Key? key}) : super(key: key);
+  final DokterModel dokterModel;
+  BookAppointmentScreen({Key? key, required this.dokterModel})
+      : super(key: key);
 
   @override
   _BookAppointmentScreenState createState() => _BookAppointmentScreenState();
@@ -20,6 +26,12 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
     super.initState();
     // Menginisialisasi tanggal terpilih dengan tanggal saat ini
     _selectedDate = DateTime.now();
+  }
+
+  BookingService bookingService = BookingService();
+
+  void _bookAppointment(int doctorId, int clinicId, DateTime date) async {
+    await bookingService.addAppointment(doctorId, clinicId, date);
   }
 
   @override
@@ -65,16 +77,16 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
                   ListView.separated(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: clinics.length,
+                    itemCount: widget.dokterModel.clinic.length,
                     separatorBuilder: (BuildContext context, int index) {
                       return Divider(
                         height: 0,
                       );
                     },
                     itemBuilder: (context, index) {
-                      final clinic = clinics[index];
+                      final clinic = widget.dokterModel.clinic[index];
                       return ListTile(
-                        title: Text(clinic),
+                        title: Text(clinic.name),
                         onTap: () {
                           setState(() {
                             _selectedClinicIndex = index;
@@ -132,6 +144,26 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
                     ),
                     child: TextButton(
                       onPressed: () {
+                        if (_selectedClinicIndex == -1) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Please select a clinic'),
+                            ),
+                          );
+                          return;
+                        }
+                        if (_selectedPaymentIndex == -1) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Please select a payment method'),
+                            ),
+                          );
+                          return;
+                        }
+                        _bookAppointment(
+                            widget.dokterModel.id,
+                            widget.dokterModel.clinic[_selectedClinicIndex].id,
+                            _selectedDate);
                         _showBookingSuccessDialog(); // Panggil fungsi untuk menampilkan dialog
                       },
                       child: Text(
@@ -203,32 +235,32 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
 final List<Map<String, String>> paymentMethods = [
   {
     'name': 'Cash',
-    'image': 'images/Cash.jpg',
+    'image': 'assets/images/Cash.jpg',
     'amount': 'Biaya: Rp 100.000',
   },
   {
     'name': 'Transfer Bank',
-    'image': 'images/tf.png',
+    'image': 'assets/images/tf.png',
     'amount': 'Biaya: Rp 100.000',
   },
   {
     'name': 'Dana',
-    'image': 'images/dana.jpeg',
+    'image': 'assets/images/dana.jpeg',
     'amount': 'Biaya: Rp 100.000',
   },
   {
     'name': 'Shopeepay',
-    'image': 'images/spay.png',
+    'image': 'assets/images/spay.png',
     'amount': 'Biaya: Rp 100.000',
   },
   {
     'name': 'Gopay',
-    'image': 'images/gopay.png',
+    'image': 'assets/images/gopay.png',
     'amount': 'Biaya: Rp 100.000',
   },
   {
     'name': 'OVO',
-    'image': 'images/ovo.png',
+    'image': 'assets/images/ovo.png',
     'amount': 'Biaya: Rp 100.000',
   },
 ];

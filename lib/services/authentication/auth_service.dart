@@ -14,10 +14,10 @@ class AuthService {
 
   // Registering User
   Future<UserCredential> registerUser(
-    username,
-    email,
-    phoneNumber,
-    password,
+    String username,
+    String email,
+    String phoneNumber,
+    String password,
   ) async {
     try {
       UserCredential userCredential =
@@ -94,6 +94,8 @@ class AuthService {
       rethrow;
     }
   }
+
+  //change
 
   // edit data
 

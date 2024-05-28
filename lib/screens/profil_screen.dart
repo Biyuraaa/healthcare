@@ -1,6 +1,9 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers, prefer_const_constructors, library_private_types_in_public_api, use_super_parameters
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:healthcare/services/authentication/auth_service.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfilScreen extends StatefulWidget {
@@ -19,8 +22,18 @@ class _ProfilScreenState extends State<ProfilScreen> {
 
   final ImagePicker _picker = ImagePicker();
 
+  AuthService auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
+    if (auth.getPict() != null) {
+      auth.getPict().then((value) {
+        setState(() {
+          fotoProfil = NetworkImage(value!);
+        });
+      });
+    }
+
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.white,
@@ -30,55 +43,72 @@ class _ProfilScreenState extends State<ProfilScreen> {
       body: Padding(
         padding: const EdgeInsets.only(top: 20.0),
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              InkWell(
-                onTap: () {
-                  _editFotoProfil(context);
-                },
-                child: CircleAvatar(
-                  radius: 100,
-                  backgroundImage: fotoProfil,
-                ),
-              ),
-              SizedBox(height: 20),
-              ListTile(
-                leading: Icon(Icons.account_circle),
-                subtitle: Text("nama"),
-                title: Text(namaProfil, style: TextStyle(fontSize: 18)),
-                trailing: IconButton(
-                  icon: Icon(Icons.edit),
-                  onPressed: () {
-                    _editData(context, "nama");
-                  },
-                ),
-              ),
-              ListTile(
-                leading: Icon(Icons.email),
-                subtitle: Text("email"),
-                title: Text(emailProfil, style: TextStyle(fontSize: 18)),
-                trailing: IconButton(
-                  icon: Icon(Icons.edit),
-                  onPressed: () {
-                    _editData(context, "email");
-                  },
-                ),
-              ),
-              ListTile(
-                leading: Icon(Icons.call),
-                subtitle: Text("Telepon"),
-                title: Text(telepon, style: TextStyle(fontSize: 18)),
-                trailing: IconButton(
-                  icon: Icon(Icons.edit),
-                  onPressed: () {
-                    _editData(context, "telepon");
-                  },
-                ),
-              ),
-            ],
-          ),
+          child: FutureBuilder(
+              future: auth.getUserDetails(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator();
+                }
+
+                if (snapshot.hasData) {
+                  Map<String, dynamic>? user = snapshot.data!.data();
+                  namaProfil = user!['username'];
+                  emailProfil = user['email'];
+                  telepon = user['phoneNumber'];
+
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          _editFotoProfil(context);
+                        },
+                        child: CircleAvatar(
+                          radius: 100,
+                          backgroundImage: fotoProfil,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      ListTile(
+                        leading: Icon(Icons.account_circle),
+                        subtitle: Text("nama"),
+                        title: Text(namaProfil, style: TextStyle(fontSize: 18)),
+                        trailing: IconButton(
+                          icon: Icon(Icons.edit),
+                          onPressed: () {
+                            _editData(context, "nama");
+                          },
+                        ),
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.email),
+                        subtitle: Text("email"),
+                        title:
+                            Text(emailProfil, style: TextStyle(fontSize: 18)),
+                        trailing: IconButton(
+                          icon: Icon(Icons.edit),
+                          onPressed: () {
+                            _editData(context, "email");
+                          },
+                        ),
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.call),
+                        subtitle: Text("Telepon"),
+                        title: Text(telepon, style: TextStyle(fontSize: 18)),
+                        trailing: IconButton(
+                          icon: Icon(Icons.edit),
+                          onPressed: () {
+                            _editData(context, "telepon");
+                          },
+                        ),
+                      ),
+                    ],
+                  );
+                }
+                return Container();
+              }),
         ),
       ),
     );
@@ -113,9 +143,12 @@ class _ProfilScreenState extends State<ProfilScreen> {
                 setState(() {
                   if (field == "nama") {
                     namaProfil = _controller.text;
+                    auth.changeUserData("username", _controller.text);
                   } else if (field == "email") {
+                    auth.changeUserData("email", _controller.text);
                     emailProfil = _controller.text;
                   } else if (field == "telepon") {
+                    auth.changeUserData("telepon", _controller.text);
                     telepon = _controller.text;
                   }
                 });
@@ -131,6 +164,8 @@ class _ProfilScreenState extends State<ProfilScreen> {
 
   Future<void> _editFotoProfil(BuildContext context) async {
     final XFile? photo = await _picker.pickImage(source: ImageSource.gallery);
+
+    auth.changeProfilePict(File(photo!.path));
 
     if (photo != null) {
       setState(() {

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:healthcare/model/dokter_model.dart';
@@ -53,8 +55,8 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                       children: [
                         CircleAvatar(
                           radius: 35,
-                          backgroundImage:
-                              AssetImage("images/${widget.dokterModel.image}"),
+                          backgroundImage: AssetImage(
+                              "assets/images/${widget.dokterModel.image}"),
                         ),
                         const SizedBox(height: 15),
                         Text(
@@ -142,8 +144,11 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                       ),
                       const SizedBox(width: 10),
                       const Icon(Icons.star, color: Colors.amber),
-                      const Text(
+                      Text(
                         "4.9",
+                        // widget.dokterModel.reviews[0].rating.isEmpty
+                        //     ? "0"
+                        //     : widget.dokterModel.reviews[0].rating,
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 16,
@@ -260,29 +265,56 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  ListTile(
-                    leading: Container(
-                      padding: const EdgeInsets.all(10),
-                      decoration: const BoxDecoration(
-                        color: Color(0xFFF0EEFA),
-                        shape: BoxShape.circle,
+                  
+                  // get all clinic data from current doctor model
+                  for (var clinic in widget.dokterModel.clinic)
+                    ListTile(
+                      leading: Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: const BoxDecoration(
+                          color: Color(0xFFF0EEFA),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.location_on,
+                          color: Color.fromARGB(255, 0, 74, 173),
+                          size: 30,
+                        ),
                       ),
-                      child: const Icon(
-                        Icons.location_on,
-                        color: Color.fromARGB(255, 0, 74, 173),
-                        size: 30,
+                      title: Text(
+                        clinic.name,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      subtitle: Text(
+                        clinic.address,
                       ),
                     ),
-                    title: const Text(
-                      "Surabaya, Medical Center",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    subtitle: const Text(
-                      "Jl. Kenjeran No.506, Kalijudan, Kec. Mulyorejo, Kota SBY, Jawa Timur  60134",
-                    ),
-                  ),
+
+                  // ListTile(
+                  //   leading: Container(
+                  //     padding: const EdgeInsets.all(10),
+                  //     decoration: const BoxDecoration(
+                  //       color: Color(0xFFF0EEFA),
+                  //       shape: BoxShape.circle,
+                  //     ),
+                  //     child: const Icon(
+                  //       Icons.location_on,
+                  //       color: Color.fromARGB(255, 0, 74, 173),
+                  //       size: 30,
+                  //     ),
+                  //   ),
+                  //   title: Text(
+                  //     "Surabaya, Medical Center",
+                  //     style: TextStyle(
+                  //       fontWeight: FontWeight.bold,
+                  //     ),
+                  //   ),
+                  //   subtitle: Text(
+                  //     "Jl. Kenjeran No.506, Kalijudan, Kec. Mulyorejo, Kota SBY, Jawa Timur  60134",
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -304,7 +336,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
         ),
         child: Column(
           children: [
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
@@ -314,7 +346,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                   ),
                 ),
                 Text(
-                  "Rp  100.000",
+                  "Rp. ${widget.dokterModel.consultationFee.toString()}",
                   style: TextStyle(
                     color: Colors.black54,
                     fontSize: 20,
@@ -330,7 +362,9 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        BookAppointmentScreen(), // Navigasi ke halaman baru
+                        BookAppointmentScreen(
+                      dokterModel: widget.dokterModel,
+                    ), // Navigasi ke halaman baru
                   ),
                 );
               },
