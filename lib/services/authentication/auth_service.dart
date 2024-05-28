@@ -46,6 +46,15 @@ class AuthService {
     }
   }
 
+  // get user name from collection
+  Future<String> getUserNameFromCollection() async {
+    DocumentSnapshot<Map<String, dynamic>> snapshot =
+        await _userData.collection("Users").doc(_currentUser!.email).get();
+    return snapshot.get('nama');
+  }
+
+
+
   // Login
   Future<UserCredential> loginUser(String email, password) async {
     try {
@@ -118,5 +127,11 @@ class AuthService {
     final String username =
         snapshot.get('firstName') + " " + snapshot.get('lastName');
     return username;
+  }
+
+  // get user data by email
+  Future<DocumentSnapshot<Map<String, dynamic>>> getUserData(
+      String email) async {
+    return await _userData.collection("Users").doc(email).get();
   }
 }

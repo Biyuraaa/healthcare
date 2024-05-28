@@ -41,6 +41,7 @@ class _UpcomingScheduleState extends State<UpcomingSchedule> {
                 }
 
                 return ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: snapshot.data!.docs.length,
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
@@ -163,6 +164,8 @@ class _UpcomingScheduleState extends State<UpcomingSchedule> {
                                 InkWell(
                                   onTap: () {
                                     // Add logic here to handle cancel action
+                                    _bookingService.cancelAppointment(
+                                        ongoingAppointments[index].id);
                                     setState(() {
                                       // Reset the schedule status
                                       isScheduledList[0] = false;
@@ -190,6 +193,9 @@ class _UpcomingScheduleState extends State<UpcomingSchedule> {
                                 ),
                                 InkWell(
                                   onTap: () {
+                                    // Add logic here to handle schedule action
+                                    _bookingService.completeAppointment(
+                                        ongoingAppointments[index].id);
                                     setState(() {
                                       isScheduledList[0] = true;
                                     });

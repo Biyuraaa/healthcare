@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -14,10 +16,13 @@ import 'package:healthcare/screens/profil_screen.dart';
 import 'package:healthcare/screens/tht_screen.dart';
 import 'package:healthcare/services/authentication/auth_page.dart';
 import 'package:healthcare/services/authentication/auth_service.dart';
+import 'package:healthcare/services/authentication/booking_service.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
   final AuthService auth = AuthService();
+
+  final BookingService bookingService = BookingService();
 
   @override
   Widget build(BuildContext context) {

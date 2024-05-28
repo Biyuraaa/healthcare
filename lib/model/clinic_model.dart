@@ -35,5 +35,27 @@ class ClinicModel {
       name: 'Klinik Utama',
       address: 'Jl. Basuki Rahmat No.40, Tegalsari, Kota SBY, Jawa Timur 60271',
     ),
+    // add more data
+    ClinicModel(
+      id: 5,
+      name: 'Klinik Sentosa',
+      address:
+          'Jl. Mayjend Sungkono No.50, Dukuh Pakis, Kota SBY, Jawa Timur 60225',
+    ),
+    ClinicModel(
+      id: 6,
+      name: 'Klinik Harmoni',
+      address: 'Jl. Raya Darmo No.60, Wonokromo, Kota SBY, Jawa Timur 60241',
+    ),
+    ClinicModel(
+      id: 7,
+      name: 'Klinik Medika Utama',
+      address: 'Jl. Raya Gubeng No.70, Gubeng, Kota SBY, Jawa Timur 60281',
+    ),
+    ClinicModel(
+      id: 8,
+      name: 'Klinik Sejahtera',
+      address: 'Jl. Kertajaya No.80, Gubeng, Kota SBY, Jawa Timur 60282',
+    ),
   ];
 }

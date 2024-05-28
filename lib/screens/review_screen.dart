@@ -3,7 +3,8 @@ import 'package:healthcare/model/dokter_model.dart';
 import 'package:healthcare/model/review_data_model.dart';
 
 class ReviewScreen extends StatelessWidget {
-  const ReviewScreen({Key? key}) : super(key: key);
+  final List<ReviewDataModel> reviews;
+  ReviewScreen({Key? key, required this.reviews}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class ReviewScreen extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 0, 74, 173),
       ),
       body: ListView.builder(
-        itemCount: ReviewDataModel.reviewDataModel.length,
+        itemCount: reviews.length,
         itemBuilder: (context, index) {
           return Container(
             margin: const EdgeInsets.all(10),
@@ -41,12 +42,12 @@ class ReviewScreen extends StatelessWidget {
                           "images/${ReviewDataModel.reviewDataModel[index].image}"),
                     ),
                     title: Text(
-                      doctors[index],
+                      reviews[index].name,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    subtitle: Text(ReviewDataModel.reviewDataModel[index].time),
+                    subtitle: Text(reviews[index].time),
                     trailing: Row(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -68,7 +69,7 @@ class ReviewScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
-                      ReviewDataModel.reviewDataModel[index].comment,
+                      reviews[index].comment,
                       style: const TextStyle(
                         color: Colors.black,
                       ),
