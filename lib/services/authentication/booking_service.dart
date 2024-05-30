@@ -66,7 +66,7 @@ class BookingService {
           .doc(doctorId)
           .collection('reviews')
           .add({
-        'name': username,
+        'name': _auth.currentUser!.displayName,
         'image': _auth.currentUser!.photoURL,
         'time': DateTime.now(),
         'rating': rating,

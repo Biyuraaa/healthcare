@@ -26,13 +26,8 @@ class _ProfilScreenState extends State<ProfilScreen> {
 
   @override
   Widget build(BuildContext context) {
-    if (auth.getPict() != null) {
-      auth.getPict().then((value) {
-        setState(() {
-          fotoProfil = NetworkImage(value!);
-        });
-      });
-    }
+
+
 
     return Scaffold(
       appBar: AppBar(
@@ -66,7 +61,9 @@ class _ProfilScreenState extends State<ProfilScreen> {
                         },
                         child: CircleAvatar(
                           radius: 100,
-                          backgroundImage: fotoProfil,
+                          backgroundImage: auth.currentUser!.photoURL != null
+                              ? NetworkImage(auth.currentUser!.photoURL!)
+                              : fotoProfil,
                         ),
                       ),
                       SizedBox(height: 20),

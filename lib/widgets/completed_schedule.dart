@@ -14,14 +14,11 @@ class CompletedSchedule extends StatefulWidget {
 }
 
 class _CompletedScheduleState extends State<CompletedSchedule> {
-  int? _rating1;
-  String _review1 = '';
   int? _rating2;
   String _review2 = '';
   bool isReviewed = false;
 
   BookingService _bookingService = BookingService();
-  AuthService _authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -277,7 +274,7 @@ class _CompletedScheduleState extends State<CompletedSchedule> {
           initialReview: initialReview,
           onReviewSubmitted: onReviewSubmitted,
           doctorId: doctorId.toString(),
-         
+        
         );
       },
     );

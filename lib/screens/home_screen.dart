@@ -21,6 +21,7 @@ import 'package:healthcare/services/authentication/booking_service.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
   final AuthService auth = AuthService();
+  ImageProvider? fotoProfil = AssetImage("assets/images/profil.jpg");
 
   final BookingService bookingService = BookingService();
 
@@ -85,7 +86,9 @@ class HomeScreen extends StatelessWidget {
                   accountName: Text(data['username'] ?? 'Guest'),
                   accountEmail: Text(data['email'] ?? 'example.com'),
                   currentAccountPicture: CircleAvatar(
-                    backgroundImage: AssetImage("assets/images/profil.jpg"),
+                    backgroundImage: auth.currentUser!.photoURL != null
+                        ? NetworkImage(auth.currentUser!.photoURL!)
+                        : fotoProfil,
                   ),
                   decoration: BoxDecoration(
                     color: const Color.fromARGB(255, 0, 74, 173),

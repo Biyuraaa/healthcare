@@ -43,6 +43,7 @@ class AuthService {
         'password': password,
         'phoneNumber': phoneNumber,
       });
+      _auth.currentUser!.updateDisplayName(username);
     }
   }
 
@@ -52,8 +53,6 @@ class AuthService {
         await _userData.collection("Users").doc(_currentUser!.email).get();
     return snapshot.get('nama');
   }
-
-
 
   // Login
   Future<UserCredential> loginUser(String email, password) async {
@@ -84,9 +83,12 @@ class AuthService {
     try {
       final storageRef = FirebaseStorage.instance.ref();
       final imageRef =
-          storageRef.child('Users/' + _currentUser!.email! + '.jpg');
+          storageRef.child('Users/${_currentUser!.email!}.jpg');
       final imageBytes = await file.readAsBytes();
       await imageRef.putData(imageBytes);
+      imageRef
+          .getDownloadURL()
+          .then((value) => _auth.currentUser!.updatePhotoURL(value));
     } catch (e) {
       print("eror bos");
     }
@@ -97,7 +99,7 @@ class AuthService {
     try {
       final storageRef = FirebaseStorage.instance.ref();
       final imageRef =
-          storageRef.child('Users/' + _currentUser!.email! + '.jpg');
+          storageRef.child('Users/${_currentUser!.email!}.jpg');
       return imageRef.getDownloadURL();
     } catch (e) {
       rethrow;
@@ -112,6 +114,9 @@ class AuthService {
     await _userData.collection('Users').doc(_currentUser!.email!).update({
       field: newValue,
     });
+    if (field == 'username') {
+      _auth.currentUser!.updateDisplayName(newValue);
+    }
   }
 
   //change password
