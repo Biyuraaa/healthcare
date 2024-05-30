@@ -27,6 +27,7 @@ class AppointmentScreen extends StatefulWidget {
 class _AppointmentScreenState extends State<AppointmentScreen> {
   BookingService bookingService = BookingService();
   AuthService authService = AuthService();
+  ImageProvider? fotoProfil = AssetImage("assets/images/profil.jpg");
 
   List<ReviewDataModel> doctorReviews = [];
   late List<ReviewDataModel> reviews = [];
@@ -80,11 +81,11 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
           var formattedTime = DateFormat('dd MMMM yyyy').format(time);
 
           doctorReviews.add(ReviewDataModel(
-            name: a['name'],
-            image: 'doctor1.jpg',
+            name: a['name'] ?? 'No name',
+            image: a['image'] ?? 'default.png',
             time: formattedTime.toString(),
             rating: a['rating'].toString(),
-            comment: a['comment'],
+            comment: a['comment'] ?? 'No comment',
           ));
         }
 
@@ -285,8 +286,11 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                                     ListTile(
                                       leading: CircleAvatar(
                                         radius: 25,
-                                        backgroundImage: AssetImage(
-                                            "images/${doctorReviews[index].image}"),
+                                        backgroundImage:
+                                            doctorReviews[index].image == ''
+                                                ? fotoProfil
+                                                : NetworkImage(
+                                                    doctorReviews[index].image),
                                       ),
                                       title: Text(
                                         doctorReviews[index].name,

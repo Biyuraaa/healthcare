@@ -42,6 +42,7 @@ class AuthService {
         'username': username,
         'password': password,
         'phoneNumber': phoneNumber,
+        
       });
       _auth.currentUser!.updateDisplayName(username);
     }
