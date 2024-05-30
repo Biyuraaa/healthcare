@@ -35,7 +35,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
 
 // get doctor review based on doctor id
   void getDoctorReviews(int doctorId) {
-    bookingService.getDoctorReviews(doctorId).then((value) {
+    bookingService.getDoctorrReviews(doctorId).then((value) {
       for (var review in value.docs) {
         setState(() {
           reviews.add(ReviewDataModel(
