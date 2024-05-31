@@ -9,6 +9,10 @@ class AuthService {
   final _userData = FirebaseFirestore.instance;
   final User? _currentUser = FirebaseAuth.instance.currentUser;
 
+
+  // check if user is logged in
+  bool get isLoggedIn => _currentUser != null;
+
   // get current user
   User? get currentUser => _currentUser;
 

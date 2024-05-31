@@ -32,6 +32,8 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
   List<ReviewDataModel> doctorReviews = [];
   late List<ReviewDataModel> reviews = [];
 
+
+
   bool isLoading = false;
 
 // get doctor review based on doctor id
@@ -447,7 +449,10 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                       ),
                     );
                   },
-                  child: Container(
+                  
+
+                  child: authService.isLoggedIn
+                      ? Container(
                     width: MediaQuery.of(context).size.width,
                     padding: const EdgeInsets.symmetric(vertical: 18),
                     decoration: BoxDecoration(
@@ -464,6 +469,24 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                         ),
                       ),
                     ),
+                        )
+                      : Container(
+                          width: MediaQuery.of(context).size.width,
+                          padding: const EdgeInsets.symmetric(vertical: 18),
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 0, 74, 173),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              "Login to Book Appointment",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
                   ),
                 ),
               ],
