@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:healthcare/widgets/completed_schedule.dart';
 import 'package:healthcare/widgets/upcoming_schedule.dart';
@@ -12,7 +14,13 @@ class ScheduleScreen extends StatefulWidget {
 class _ScheduleScreenState extends State<ScheduleScreen> {
   int _buttonIndex = 0;
 
+  FirebaseAuth auth = FirebaseAuth.instance;
+  // get current user
+  User? user = FirebaseAuth.instance.currentUser;
+
   final _scheduleWidgets = [
+    
+    
     const UpcomingSchedule(),
     const CompletedSchedule(),
     Container(),

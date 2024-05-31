@@ -78,18 +78,7 @@ class _ProfilScreenState extends State<ProfilScreen> {
                           },
                         ),
                       ),
-                      ListTile(
-                        leading: Icon(Icons.email),
-                        subtitle: Text("email"),
-                        title:
-                            Text(emailProfil, style: TextStyle(fontSize: 18)),
-                        trailing: IconButton(
-                          icon: Icon(Icons.edit),
-                          onPressed: () {
-                            _editData(context, "email");
-                          },
-                        ),
-                      ),
+                  
                       ListTile(
                         leading: Icon(Icons.call),
                         subtitle: Text("Telepon"),

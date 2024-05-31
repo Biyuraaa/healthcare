@@ -432,23 +432,7 @@ class HomeScreen extends StatelessWidget {
                               color: Colors.black45,
                             ),
                           ),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.star,
-                                color: Colors.amber,
-                              ),
-                              Text(
-                                ReviewDataModel.reviewDataModel[index]
-                                    .rating, // Gunakan rating dari ReviewDataModel
-                                style: TextStyle(
-                                  color: Colors.black45,
-                                ),
-                              ),
-                            ],
-                          ),
+                         
                         ],
                       ),
                     ),

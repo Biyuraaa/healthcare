@@ -76,8 +76,8 @@ class DokterModel {
           "Jl. Kenjeran No.506, Kalijudan, Kec. Mulyorejo, Kota SBY, Jawa Timur  60134",
       consultationFee: 200000.0,
       clinic: [
-        ClinicModel.clinicsData[4],
-        ClinicModel.clinicsData[5],
+        ClinicModel.clinicsData[2],
+        ClinicModel.clinicsData[1],
       ],
       reviews: ReviewDataModel.reviewDataModel,
     ),
@@ -92,7 +92,7 @@ class DokterModel {
       address:
           "Jl. Kenjeran No.506, Kalijudan, Kec. Mulyorejo, Kota SBY, Jawa Timur  60134",
       consultationFee: 250000.0,
-      clinic: [ClinicModel.clinicsData[6], ClinicModel.clinicsData[7]],
+      clinic: [ClinicModel.clinicsData[3], ClinicModel.clinicsData[1]],
       reviews: ReviewDataModel.reviewDataModel,
     ),
     DokterModel(

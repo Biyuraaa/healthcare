@@ -2,8 +2,8 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:healthcare/screens/login_screen.dart';
 import 'package:healthcare/screens/welcome_screen.dart';
+import 'package:healthcare/widgets/navbar_roots.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
@@ -15,9 +15,9 @@ class AuthPage extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return WelcomeScreen();
+            return NavBarRoots();
           } else {
-            return const LoginScreen();
+            return WelcomeScreen();
           }
         },
       ),

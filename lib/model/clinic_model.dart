@@ -17,45 +17,29 @@ class ClinicModel {
   static final List<ClinicModel> clinicsData = [
     ClinicModel(
       id: 1,
-      name: 'Klinik Sehat Medika',
-      address: 'Jl. Diponegoro No.15, Tegalsari, Kota SBY, Jawa Timur 60265',
+      name: 'Klinik Medicl Center',
+      address: 'Jl.Kenjeran No.506, Kota SBY, Jawa Timur 60265',
     ),
     ClinicModel(
       id: 2,
-      name: 'Klinik Kasih Ibu',
-      address: 'Jl. Ahmad Yani No.20, Wonokromo, Kota SBY, Jawa Timur 60244',
+      name: 'Klinik Tabita',
+      address: 'Jl. Dharma Husada Indah No.26 Kota SBY, Jawa Timur 60244',
     ),
     ClinicModel(
       id: 3,
-      name: 'Klinik Pratama',
-      address: 'Jl. Pemuda No.30, Gubeng, Kota SBY, Jawa Timur 60272',
+      name: 'Klinik Surya Medika',
+      address: 'Jl. Mojo Klanggru Kota SBY, Jawa Timur 60272',
     ),
     ClinicModel(
       id: 4,
-      name: 'Klinik Utama',
-      address: 'Jl. Basuki Rahmat No.40, Tegalsari, Kota SBY, Jawa Timur 60271',
+      name: 'Klinik Pratama',
+      address: 'Jl. Wisma Permai Barat III Kota SBY, Jawa Timur 60272',
     ),
-    // add more data
     ClinicModel(
       id: 5,
-      name: 'Klinik Sentosa',
-      address:
-          'Jl. Mayjend Sungkono No.50, Dukuh Pakis, Kota SBY, Jawa Timur 60225',
-    ),
-    ClinicModel(
-      id: 6,
-      name: 'Klinik Harmoni',
-      address: 'Jl. Raya Darmo No.60, Wonokromo, Kota SBY, Jawa Timur 60241',
-    ),
-    ClinicModel(
-      id: 7,
-      name: 'Klinik Medika Utama',
-      address: 'Jl. Raya Gubeng No.70, Gubeng, Kota SBY, Jawa Timur 60281',
-    ),
-    ClinicModel(
-      id: 8,
-      name: 'Klinik Sejahtera',
-      address: 'Jl. Kertajaya No.80, Gubeng, Kota SBY, Jawa Timur 60282',
-    ),
+      name: 'Klinik Tong Fang',
+      address: 'Jl. Mojo I No.10 Kota SBY, Jawa Timur 60226',
+    )
+
   ];
 }

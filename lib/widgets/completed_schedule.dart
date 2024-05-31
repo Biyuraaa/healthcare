@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:healthcare/model/clinic_model.dart';
 import 'package:healthcare/model/dokter_model.dart';
@@ -19,9 +20,15 @@ class _CompletedScheduleState extends State<CompletedSchedule> {
   bool isReviewed = false;
 
   BookingService _bookingService = BookingService();
+  User? user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
+    if (user == null) {
+      return const Center(
+        child: Text("Please login to view your schedule"),
+      );
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
