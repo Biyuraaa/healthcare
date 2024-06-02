@@ -144,7 +144,7 @@ class _CompletedScheduleState extends State<CompletedSchedule> {
                                         ),
                                       ],
                                     ),
-                                    const Row(
+                                    Row(
                                       children: [
                                         Icon(
                                           Icons.access_time_filled,
@@ -152,7 +152,7 @@ class _CompletedScheduleState extends State<CompletedSchedule> {
                                         ),
                                         SizedBox(width: 5),
                                         Text(
-                                          "11:00 AM",
+                                          data['hour'] ?? "10:00 AM",
                                           style: TextStyle(
                                             color: Colors.black54,
                                           ),

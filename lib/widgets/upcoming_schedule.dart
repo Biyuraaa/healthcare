@@ -126,7 +126,7 @@ class _UpcomingScheduleState extends State<UpcomingSchedule> {
                                     ),
                                   ],
                                 ),
-                                const Row(
+                                Row(
                                   children: [
                                     Icon(
                                       Icons.access_time_filled,
@@ -134,7 +134,7 @@ class _UpcomingScheduleState extends State<UpcomingSchedule> {
                                     ),
                                     SizedBox(width: 5),
                                     Text(
-                                      "10:00 AM",
+                                      data['hour'] ?? "10:00 AM",
                                       style: TextStyle(
                                         color: Colors.black54,
                                       ),

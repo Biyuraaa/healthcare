@@ -9,7 +9,8 @@ class BookingService {
   AuthService _authService = AuthService();
 
   // add appointment to user's appointment list
-  Future<void> addAppointment(int doctorId, int clinicId, DateTime date) async {
+  Future<void> addAppointment(
+      int doctorId, int clinicId, DateTime date, String hour) async {
     try {
       // add to user's appointment collection
       DocumentReference docRef = await _firestore
@@ -21,6 +22,7 @@ class BookingService {
         'clinicId': clinicId,
         'date': date,
         'status': true,
+        'hour': hour,
       });
 
       // get the appointment id
@@ -33,6 +35,7 @@ class BookingService {
         'date': date,
         'status': true,
         'userEmail': _auth.currentUser!.email,
+        'hour': hour,
       });
     } catch (e) {
       throw e;

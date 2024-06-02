@@ -16,6 +16,7 @@ class BookAppointmentScreen extends StatefulWidget {
 
 class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
   late DateTime _selectedDate;
+  late String _selectedHour;
   int _selectedPaymentIndex =
       -1; // Menyimpan indeks metode pembayaran yang dipilih
   int _selectedClinicIndex = -1; // Menyimpan indeks klinik yang dipilih
@@ -26,12 +27,14 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
     super.initState();
     // Menginisialisasi tanggal terpilih dengan tanggal saat ini
     _selectedDate = DateTime.now();
+    _selectedHour = '08:00';
   }
 
   BookingService bookingService = BookingService();
 
-  void _bookAppointment(int doctorId, int clinicId, DateTime date) async {
-    await bookingService.addAppointment(doctorId, clinicId, date);
+  void _bookAppointment(
+      int doctorId, int clinicId, DateTime date, String hour) async {
+    await bookingService.addAppointment(doctorId, clinicId, date, hour);
   }
 
   @override
@@ -50,24 +53,77 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
             SliverList(
               delegate: SliverChildListDelegate(
                 [
-                  Text(
-                    'Select Date:',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 10),
+                  
                   InkWell(
                     onTap: _selectDate,
                     child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(Icons.calendar_today),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                    'Select Date:',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                            SizedBox(height: 10),
+                            Row(
+                              children: [
+                                Icon(Icons.calendar_today),
                         SizedBox(width: 10),
                         Text(
                           '${_selectedDate.day}/${_selectedDate.month}/${_selectedDate.year}',
                           style: TextStyle(fontSize: 16),
                         ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(width: 10),
+                        Column(
+                          children: [
+                            // hour selection
+                            Text(
+                              'Select Hour:',
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(width: 10),
+                            DropdownButton<String>(
+                              value: _selectedHour,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  _selectedHour = newValue!;
+                                });
+                              },
+                              items: <String>[
+                                '08:00',
+                                '09:00',
+                                '10:00',
+                                '11:00',
+                                '12:00',
+                                '13:00',
+                                '14:00',
+                                '15:00',
+                                '16:00',
+                                '17:00',
+                                '18:00',
+                                '19:00',
+                                '20:00',
+                              ].map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
+                  SizedBox(height: 10),
+                  
                   SizedBox(height: 20),
                   Text(
                     'Select Clinic:',
@@ -163,7 +219,8 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
                         _bookAppointment(
                             widget.dokterModel.id,
                             widget.dokterModel.clinic[_selectedClinicIndex].id,
-                            _selectedDate);
+                            _selectedDate,
+                            _selectedHour);
                         _showBookingSuccessDialog(); // Panggil fungsi untuk menampilkan dialog
                       },
                       child: Text(
@@ -197,6 +254,33 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
       });
     }
   }
+
+  Future<void> _showBookingFailedDialog() async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Booking Failed'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: [
+                Text('Your appointment booking has failed.'),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
 
   // Fungsi untuk menampilkan dialog booking berhasil
   Future<void> _showBookingSuccessDialog() async {

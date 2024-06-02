@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:healthcare/model/dokter_model.dart';
 import 'package:healthcare/model/review_data_model.dart';
 import 'package:healthcare/screens/book_appointment_screen.dart';
+import 'package:healthcare/screens/login_screen.dart';
 import 'package:healthcare/screens/review_screen.dart';
 import 'package:healthcare/services/authentication/auth_service.dart';
 import 'package:healthcare/services/authentication/booking_service.dart';
@@ -440,6 +441,8 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                 const SizedBox(height: 9),
                 InkWell(
                   onTap: () {
+                    authService.isLoggedIn
+                        ?
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -447,6 +450,12 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                           dokterModel: widget.dokterModel,
                         ), // Navigasi ke halaman baru
                       ),
+                          )
+                        : Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const LoginScreen()), // Navigasi ke halaman login
                     );
                   },
                   
